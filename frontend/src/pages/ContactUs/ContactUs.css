@@ -1,0 +1,90 @@
+/* Wrapper to center content similar to home page spacing */
+.contact-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+  margin-bottom: 60px;
+  padding: 0 20px;
+  font-family: "Inter", sans-serif; /* modern clean font */
+}
+
+/* Card-style container like your hero/sections */
+.contact-box {
+  width: 100%;
+  max-width: 800px;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Heading style similar to 'Order your favourite food' */
+.contact-heading {
+  font-size: 42px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Subtext matching your hero section subtitle style */
+.contact-subtext {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Contact details */
+.contact-info p {
+  font-size: 16px;
+  margin: 6px 0;
+  color: #444;
+}
+
+/* Form styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+/* Input + textarea common style */
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.contact-form textarea {
+  height: 130px;
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff7f50; /* soft orange highlight */
+  box-shadow: 0 0 5px rgba(255, 127, 80, 0.3);
+}
+
+/* Button matching your View Menu / Sign In style */
+.contact-form button {
+  align-self: flex-start;
+  padding: 14px 30px;
+  font-size: 16px;
+  background-color: #ff7f50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #e76f42;
+}
