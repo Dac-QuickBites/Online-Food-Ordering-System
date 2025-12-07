@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { assets } from "../../assets/assets";
-
+import SearchPopup from '../SearchPopup/SearchPopup'
 const Navbar = () => {
   const [menu, setMenu] = useState("menu");
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
     <div className="navbar">
@@ -42,7 +43,7 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
+        <img src={assets.search_icon} alt="" onClick={()=>setShowSearch(true)}/>
         <div className="navbar-search-icon">
           <Link to="/cart">
             <img src={assets.basket_icon} alt="" />
@@ -51,6 +52,7 @@ const Navbar = () => {
         </div>
         <button>sign in</button>
       </div>
+      {showSearch && <SearchPopup onClose={() => setShowSearch(false)} />}
     </div>
   );
 };
