@@ -1,21 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./SearchPopup.css";
-
-// Example product list (replace with your API data)
-const products = [
-  { id: 1, name: "Pizza Margherita" },
-  { id: 2, name: "Burger" },
-  { id: 3, name: "Pasta Alfredo" },
-  { id: 4, name: "French Fries" },
-  { id: 5, name: "Chicken Wings" },
-];
+import { StoreContext } from "../../context/StoreContext";
 
 const SearchPopup = ({ onClose }) => {
+  const { food_list } = useContext(StoreContext);    // ⬅ Using your real data
   const [query, setQuery] = useState("");
 
-  // Filter products
-  const filtered = products.filter((p) =>
-    p.name.toLowerCase().includes(query.toLowerCase())
+  // Filter matching food items
+  const filtered = food_list.filter((item) =>
+    item.name.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
@@ -32,11 +25,26 @@ const SearchPopup = ({ onClose }) => {
         />
 
         <div className="search-results">
-          {filtered.length === 0 ? (
+          {query.length === 0 ? (
+            <p>Type to search...</p>
+          ) : filtered.length === 0 ? (
             <p>No results found.</p>
           ) : (
             filtered.map((item) => (
-              <p key={item.id} className="search-item">{item.name}</p>
+              <div key={item._id} className="search-item">
+                
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="search-item-img"
+                />
+
+                <div className="search-info">
+                  <p className="search-name">{item.name}</p>
+                  <p className="search-price">${item.price}</p>
+                </div>
+
+              </div>
             ))
           )}
         </div>
