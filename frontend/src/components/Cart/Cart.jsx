@@ -5,13 +5,24 @@ import "./Cart.css";
 const Cart = () => {
   const { cartItems, food_list, addToCart, removeFromCart } = useContext(StoreContext);
 
-  // Filter only products whose quantity is > 0
-  const cartProducts = food_list.filter((item) => cartItems[item._id] > 0);
+  // Convert cartItems into array of products
+  const cartProducts = Object.entries(cartItems)
+    .filter(([id, qty]) => qty > 0)                   // Only items with qty > 0
+    .map(([id, qty]) => {
+      // id comes as NUMBER, convert everything to string for matching
+      const product = food_list.find(item => item._id === id.toString());
 
-  // Calculate total price
-  const totalPrice = cartProducts.reduce((sum, item) => {
-    return sum + item.price * cartItems[item._id];
-  }, 0);
+      if (product) {
+        return { ...product, quantity: qty };
+      }
+      return null;
+    })
+    .filter(Boolean);  // Remove nulls
+
+  const totalPrice = cartProducts.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="cart-page">
@@ -30,22 +41,22 @@ const Cart = () => {
                   <h3>{item.name}</h3>
                   <p>${item.price}</p>
 
-                  {/* Quantity Control */}
                   <div className="cart-controls">
                     <button onClick={() => removeFromCart(item._id)}>-</button>
-
-                    <span>{cartItems[item._id]}</span>
-
+                    <span>{item.quantity}</span>
                     <button onClick={() => addToCart(item._id)}>+</button>
                   </div>
+                </div>
+
+                <div className="cart-item-total">
+                  <p>${(item.price * item.quantity).toFixed(2)}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Total Section */}
           <div className="cart-total">
-            <h3>Total: ${totalPrice.toFixed(2)}</h3>
+            <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
             <button className="checkout-btn">Checkout</button>
           </div>
         </>
