@@ -3,9 +3,10 @@ import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Home from "./pages/Home/Home";
-import Cart from "./pages/Cart/Cart";
+import Cart from "./components/Cart/Cart";
 import Footer from "./components/Footer/Footer";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import Offers from './components/Offers/Offers'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 
 const App = () => {
@@ -21,6 +22,8 @@ const App = () => {
 
           <Route path="/PlaceOrder" element={<PlaceOrder />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/offers" element={<Offers />} />
+
         </Routes>
       </div>
       <Footer />

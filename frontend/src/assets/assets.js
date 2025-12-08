@@ -59,6 +59,7 @@ import profile_icon from './profile_icon.png'
 import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
+import SpecialOffer2 from './SpecialOffer2.png'
 
 export const assets = {
     logo,
@@ -114,6 +115,10 @@ export const menu_list = [
     {
         menu_name: "Noodles",
         menu_image: menu_8
+    },
+    {
+        menu_name: "All",
+        menu_image: SpecialOffer2
     }]
 
 export const food_list = [
