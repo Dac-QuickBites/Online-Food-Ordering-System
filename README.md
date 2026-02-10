@@ -162,10 +162,8 @@ com.foodiesapi
 
 ## 📈 Future Enhancements
 
-* Online payment gateway integration
 * Order tracking system
 * Notification service
-* Dockerization
 * Cloud deployment
 
 
